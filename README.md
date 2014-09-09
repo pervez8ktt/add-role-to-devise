@@ -25,7 +25,7 @@ $ rails g migration add_role_id_to_users role_id:number
 $ rails g devise:views
 ```
 
-#application.rb#
+#application_controller.rb#
 
 ```
 #!ruby
