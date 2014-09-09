@@ -1,0 +1,3 @@
+class RegistrationsControllerController < DeviseController
+
+end
