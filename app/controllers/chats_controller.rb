@@ -1,8 +1,10 @@
 class ChatsController < ApplicationController
   before_action :set_chat, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :role, only: [:edit, :update, :destroy]
   # GET /chats
   # GET /chats.json
+  
   def index
     @chats = Chat.all
   end
@@ -66,7 +68,17 @@ class ChatsController < ApplicationController
     def set_chat
       @chat = Chat.find(params[:id])
     end
-
+    
+    def role
+      if current_user.role_id==1 || current_user.role_id==2
+        logger.info("I am admin")
+      else
+        logger.info("I am not admin")
+        redirect_to  welcome_index_path , notice: 'Unauthorized Access.'
+        
+      end
+      
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def chat_params
       params.require(:chat).permit(:message)

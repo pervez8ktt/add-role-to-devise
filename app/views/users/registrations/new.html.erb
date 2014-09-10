@@ -1,0 +1,32 @@
+<%if admin_signed_in?%>
+<h2>users Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+  <div>
+  <label>Role</label>
+    <% @role=Role.all %>
+    <select name=user[role_id]>
+    <% @role.each do |r| %>
+      <option value=<%=r.id%>><%=r.role_name%></option>
+    <% end %>
+    </select>
+  </div>
+  
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "users/shared/links" %>
+<% else %>
+Unauthorized Access
+<% end %>

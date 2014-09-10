@@ -4,6 +4,7 @@
 ```
 #!url
 https://github.com/plataformatec/devise
+http://devise.plataformatec.com.br
 ```
 
 #gem file#
@@ -18,13 +19,23 @@ gem 'devise'
 
 ```
 #!ruby
-$ rails g devise:install
-$ rails g devise user
-$ rails g scaffold role role_name:string
-$ rails g migration add_role_id_to_users role_id:number
-$ rails g devise:views
+rails g devise:install
+rails g devise user
+rails g scaffold role role_name:string
+rails g migration add_role_id_to_users role_id:number
+rails g devise:views users
+
+rails g devise admin
+rails g devise:views admins
 ```
 
+#Scoped Views#
+config/initializers/devise.rb
+
+```
+#!ruby
+config.scoped_views = true
+```
 #application_controller.rb#
 
 ```

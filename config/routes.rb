@@ -1,4 +1,5 @@
 Workspace::Application.routes.draw do
+  devise_for :admins
   resources :roles
 
   devise_for :users
