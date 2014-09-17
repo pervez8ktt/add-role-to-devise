@@ -10,15 +10,12 @@ http://devise.plataformatec.com.br
 #gem file#
 
 ```
-#!ruby
-
 gem 'devise'
 ```
 
 #Terminal#
 
 ```
-#!ruby
 rails g devise:install
 rails g devise user
 rails g scaffold role role_name:string
@@ -33,13 +30,11 @@ rails g devise:views admins
 config/initializers/devise.rb
 
 ```
-#!ruby
 config.scoped_views = true
 ```
 #application_controller.rb#
 
 ```
-#!ruby
 before_action :configure_permitted_parameters, if: :devise_controller?
   
 protected
@@ -52,7 +47,6 @@ end
 #Layout#
 
 ```
-#!ruby
 <p class="navbar-text pull-right">
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>
@@ -78,13 +72,11 @@ end
 
 #Development.rb#
 ```
-#!ruby
 config.action_mailer.default_url_options = { host: '$IP', port: '$PORT' }
 ```
 #Helpin Methods#
 
 ```
-#!ruby
 before_action :authenticate_user!
 
 user_signed_in?
